@@ -39,7 +39,7 @@ const UsuariosComp = Vue.component('usuarios-component',{
             Usuarios.todos( res => {
                 this.usuarios = res
                 this.initForm()
-                this.obtenerFecha()
+                this.obtenerFechaCreado()
                 
             })
         },
@@ -50,7 +50,7 @@ const UsuariosComp = Vue.component('usuarios-component',{
                 delete form._id
                 Usuarios.crear(form, res => {
                     console.log(res)
-                    this.obtenerFecha()
+                    this.obtenerFechaCreado()
                      this.obtenerTodos()
                 })
             } else {
@@ -72,13 +72,13 @@ const UsuariosComp = Vue.component('usuarios-component',{
         editar: function (usuario){
             this.form = {...usuario}
         },
-        obtenerFecha: function(){
+        obtenerFechaCreado: function(){
             const date = new Date()
             return this.fecha = date.toLocaleString()//.toLocaleDateString() 
         }
     },
     mounted: function (){
-        this.obtenerFecha()
+        this.obtenerFechaCreado()
         this.obtenerTodos()
     },
     template:`
